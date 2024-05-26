@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://hub.docker.com/r/neckell/docker-mailserver/
-        username: ${{ secrets.AzureAppService_ContainerUsername_f025f92e76a04c6eb64937e96d4b3847 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_a9321e512c4b4b9fac335ac563abb2f5 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_1fbb800b6d3c4bd3b72ea56d387e35f6 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_7c6261f972504dd8962f887df2916a4f }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: hub.docker.com/r/neckell/docker-mailserver/${{ secrets.AzureAppService_ContainerUsername_f025f92e76a04c6eb64937e96d4b3847 }}/docker-mailserver:${{ github.sha }}
+        tags: hub.docker.com/r/neckell/docker-mailserver/${{ secrets.AzureAppService_ContainerUsername_1fbb800b6d3c4bd3b72ea56d387e35f6 }}/docker-mailserver:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'aineed-email'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_7bf41fcf24934e26867258996ab38ec1 }}
-        images: 'hub.docker.com/r/neckell/docker-mailserver/${{ secrets.AzureAppService_ContainerUsername_f025f92e76a04c6eb64937e96d4b3847 }}/docker-mailserver:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_54a8c3c6496c4555ac3d1a8a8657f36b }}
+        images: 'hub.docker.com/r/neckell/docker-mailserver/${{ secrets.AzureAppService_ContainerUsername_1fbb800b6d3c4bd3b72ea56d387e35f6 }}/docker-mailserver:${{ github.sha }}'
